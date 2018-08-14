@@ -1,0 +1,176 @@
+<div class="wrapper">
+<h1>SVG - Scalable Vector Graphics</h1>
+<section>
+  <a id="tagsvg"></a>
+  <h3><code>&lt;svg&gt;</code> - Tag principal (container):</h3>
+  
+  
+<fieldset>
+  <legend>Índice</legend>
+  
+  <ol>
+    <li><a href="#tagsvg"><code>&lt;svg&gt;</code></a>
+      <ol>
+        <li><a href="#tagsvgsintaxe">Sintaxe</a></li>
+        <li><a href="#tagsvgnotas">Notas</a></li>
+        <li><a href="#tagsvgatributos">Atributos</a></li>
+        <li><a href="#viewbox">Atributo <code>viewBox</code></a></li>
+        <li><a href="#preserveAspectRatio">Atributo <code>preserveAspectRatio</code></a></li>
+      </ol>
+    </li>
+  </ol>
+  
+</fieldset>
+  
+
+  
+  <fieldset>
+    <a id="tagsvgsintaxe"></a>
+    <legend>Sintaxe:</legend>
+    <div class="code">
+      <code>&lt;svg width="300" height="300"&gt;</code><code>&lt;/svg&gt;</code>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Notas:</legend>
+    <ul>
+    <li>Gera a tela, o canvas, a área de renderização do SVG e nela gera o viewport (área visível);</li>
+    <li>Parafraseando a <a href="http://www.sarasoueidan.com/" target="_blank">Sara Soueidan</a>, wizard SVG level 100, super-referência em SVG: "The viewport is the viewing area where the SVG will be visible. You can think of the viewport as a window through which you can see a particular scene. The scene may be entirely or partially visible through that window." ou seja "O viewport é a área de visualização onde o SVG será visível. Você pode pensar no viewport como uma janela através de onde você pode ver uma cena particular. A cena pode ser inteira ou parcialmente visível através desta janela."</li>
+    <li>Para <strong><em>width</em></strong> e <strong><em>height</em></strong> a unidade padrão é o pixel (<strong><em>px</em></strong>), porém podemos utilizar também as unidades: <strong><em>em, ex, px, pt, pc, cm, mm, in,</em></strong> e <strong><em>%</em></strong>.</li>
+    <li>Ao carregar o SVG, os navegadores estabelecem um valor inicial para ambos os seus sistemas de coordenadas (<strong><em>viewport coordinate system</em></strong> e <strong><em>user coordinate system</em></strong>).</li>
+    <li><strong><em>viewport coordinate system</em></strong>: eixo x,y, inicialmente com seu ponto 0,0 no canto esquerdo superior do svg.</li>
+    <li><strong><em>user coordinate system</em></strong>: viewBox</li>
+</ul>
+  </fieldset>
+  <fieldset>
+    <legend>Atributos:</legend>
+    <ul>
+      <li><strong>width</strong>: largura da tela;</li>
+      <li><strong>height</strong>: altura da tela;</li>
+      <li><strong>viewBox</strong>: sistema de coordenadas de usuário (<em>user coordinate system</em>) em relação ao sistema de coordenadas do viewport (<em>viewport coordinate system</em>), definindo assim a posição e dimensões da área visível do svg no viewport. Mais detalhes <a href="#viewbox">abaixo</a>.
+        
+      </li>
+      <li><strong>preserveAspectRatio</strong>: é usado para manter uniforme o redimensionamento do grupo de vetores do svg, preservando assim suas proporções.</li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <a id="viewbox"></a>
+    <legend>Atributo: <code>viewBox</code></legend>
+    <ul>
+          <li><strong>sintaxe: <em>viewBox="[x] [y] [w] [h]" </em></strong></li>
+          <li><strong>[x]</strong>: define a posição horizontal do ponto 0,0 do eixo x,y da área de renderização do viewport</li>
+          <li><strong>[y]</strong>: define a posição vertical do ponto 0,0 do eixo x,y da área de renderização do viewport</li>
+          <li><strong>[w]</strong>: define a largura de todo o conjunto de elementos visíveis dentro do viewport;</li>
+          <li><strong>[h]</strong>: define a altura de todo o conjunto de elementos visíveis dentro do viewport;</li><br/><br/>
+          <li><strong>nota 1</strong>: O viewBox funciona como se fosse a tela inteira, o canvas inteiro, da imagem, fazendo do viewport uma espécie de "janela" que se move pela tela e ao se redimensionar, aplica zoom na mesma. (Assim como o navegador se comporta em relação ao mapa no Google Maps, sendo o mapa o canvas inteiro e o navegador somente o viewport).</li>
+          <li><strong>nota 2</strong>: quando não está definido na tag, a mesma é renderizada mantendo a posição padrão do eixo x,y e toma as dimensões do viewport;</li>
+          <li><strong>nota 3</strong>: na sintaxe do viewBox, alterar os parâmetros <strong><em>[x]</em></strong> e <strong><em>[y]</em></strong> resulta no mesmo efeito visual de quando trabalhamos a propriedade css <strong><em>"transform: translate([x],[y])"</em></strong>, assim como alterando os parâmetros <strong><em>[w]</em></strong> e <strong><em>[h]</em></strong> resulta na mesma visualização de modificarmos a propriedade css <strong><em>"transform: scale([n])"</em></strong>.</li>
+          
+        </ul>
+
+    <a id="exemploviewbox"></a>
+    <h6>Exemplo do viewBox:</h6>
+    
+    
+    <svg width="700" height="300" class="no-border">
+      
+      <text x="22%" y="30" style="fill:blue;"> viewport: width = 100px, height = 100px</text>
+      
+      <g>
+        <circle r="25" cx="80" cy="100" fill="green"></circle>
+        <circle r="25" cx="120" cy="100" fill="yellow"></circle>
+        <circle r="25" cx="100" cy="140" fill="darkblue"></circle>              
+        <rect x="50" y="70" width="100" height="100" style="stroke: blue; stroke-width: 1px; fill: transparent;" />
+        <rect x="51" y="71" width="98" height="98" style="stroke: red; stroke-width: 1px; fill: transparent;" />
+        
+        <text x="30" y="200" style="fill: red;"> viewBox indefinido ou</text>
+        <text x="30" y="220" style="fill: red;"> viewBox="0 0 100 100"</text>
+      </g>
+      
+      <g>
+        <circle r="37.5" cx="285" cy="135" fill="green"></circle>
+        <circle r="37.5" cx="345" cy="135" fill="yellow"></circle>
+        <circle r="37.5" cx="315" cy="195" fill="darkblue"></circle>
+        
+        <rect x="270" y="70" width="100" height="100" style="stroke: blue; stroke-width: 1px; fill: transparent;" />
+        <rect x="240" y="90" width="150" height="150" style="stroke: red; stroke-width: 1px; fill: transparent;" />
+        
+        <text x="240" y="270" style="fill: red;"> viewBox="30 -20 75 75"</text>
+   
+      </g>
+      
+    
+      <g>
+        <circle r="12.5" cx="535" cy="75" fill="green"></circle>
+        <circle r="12.5" cx="555" cy="75" fill="yellow"></circle>
+        <circle r="12.5" cx="545" cy="94" fill="darkblue"></circle>
+        
+        <rect x="490" y="70" width="100" height="100" style="stroke: blue; stroke-width: 1px; fill: transparent;" />
+        <rect x="520" y="60" width="50" height="50" style="stroke: red; stroke-width: 1px; fill: transparent;" />
+        
+        <text x="460" y="200" style="fill: red;"> viewBox="-30 10 150 150"</text>
+
+      </g>
+
+      
+    </svg>
+
+    
+    <p>Exemplo interativo por Sara Soueidan: <a href="http://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/" target="_blank">http://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/</a></p>
+  </fieldset>
+  
+  <fieldset>
+    <a id="preserveAspectRatio"></a>
+  <legend>Atributo: preserveAspectRatio</legend>
+    
+  <ul>
+    <li><strong>sintaxe: <em>preserveAspectRatio="[defer]? [align] [meet|slice]?"</em></strong></li>
+    <li><strong>[defer]?</strong>: usado quando se aplica o svg em uma imagem; [*pesquisar]</li>
+    <li><strong>[align]</strong>: indica se irá ou não forçar o redimensionamento uniforme e, caso seja, aonde ficará alinhado o vetor no caso de o tamanho do <strong>viewBox</strong> não coincidir com o do <strong>viewport</strong>;<br><br>
+    <ul>
+      <li>
+        <strong>nota 1</strong>: caso o valor deste parâmetro seja <strong><em>"none"</em></strong>, o vetor será redimensionado, "esticado", para atingir as margens do <strong>viewport</strong>, <strong>não</strong> preservando as proporções uniformes;
+      </li>
+      <li><strong>nota 2</strong>: todos os demais valores irão preservar as proporções uniformes e já indicarão onde no <strong>viewport</strong> será ancorado o alinhamento, o comportamento do posicionamento é parecido com o funcionamento da propriedade CSS <strong><em>"background-position"</em></strong>;</li>
+      <li><strong>Valores possíveis</strong>: <br>
+        <ul>
+          <li><strong>"none"</strong>:  o vetor será redimensionado, "esticado", para atingir as margens do <strong>viewport</strong>, <strong>não</strong> preservando as proporções uniformes;</li>
+          <li><strong>"xMinYMin"</strong>: equivalente à <strong><em>"background-position: 0% 0%;"</em></strong>;</li>
+          <li><strong>"xMinYMid"</strong>: equivalente à <strong><em>"background-position: 0% 50%;"</em></strong>;</li>
+          <li><strong>"xMinYMax"</strong>: equivalente à <strong><em>"background-position: 0% 100%;"</em></strong>;</li>
+          <li><strong>"xMidYMin"</strong>: equivalente à <strong><em>"background-position: 50% 0%;"</em></strong></li>
+          <li><strong>"xMidYMid"</strong>: equivalente à <strong><em>"background-position: 50% 50%;"</em></strong>  (valor default);</li>
+          <li><strong>"xMidYMax"</strong>: equivalente à <strong><em>"background-position: 50% 100%;"</em></strong>;</li>
+          <li><strong>"xMaxYMin"</strong>: equivalente à <strong><em>"background-position: 100% 0%;"</em></strong>;</li>
+          <li><strong>"xMaxYMid"</strong>: equivalente à <strong><em>"background-position: 100% 50%;"</em></strong>;</li>
+          <li><strong>"xMaxYMax"</strong>: equivalente à <strong><em>"background-position: 100% 100%;"</em></strong>;</li>
+        </ul><br>
+      </li>
+      </ul>
+    </li>
+    <li><strong>[meet|slice] <em>(default: "meet")</em></strong>: define que <strong>viewBox</strong> deve ter as arestas de suas dimensões relativas às arestas dimensionais do <strong>viewport</strong>. Funciona de forma similar à propriedade css <strong><em>"background-size"</em></strong>, onde o valor <strong><em>"contain"</em></strong> equivale ao <strong><em>"meet"</em></strong> e o valor <strong><em>"cover"</em></strong> é equivalente ao <strong><em>"slice"</em></strong>;
+      <h6>Exemplo:</h6>
+    <svg width="500" height="200" class="no-border">
+<text x="30" y="10" style="fill: green;">meet / contain</text>
+      <text x="50" y="40" fill="blue">viewport</text>
+      
+        <rect x="30" y="50" width="100" height="100" fill="transparent" stroke="blue" />
+      
+      <text x="75" y="-140" fill="red" transform="rotate(90)">viewBox</text>
+      <rect x="31" y="75" width="99" height="50" fill="transparent" stroke="red"></rect>
+      
+      
+      <text x="250" y="10" fill="green">slice / cover</text>
+      <text x="270" y="40" fill="blue">viewport</text>
+      <rect x="250" y="50" width="100" height="100" fill="transparent" stroke="blue" />
+      <rect x="220" y="51" width="160" height="98" fill="transparent" stroke="red"></rect>
+      <text x="75" y="-390" fill="red" transform="rotate(90)">viewBox</text>
+      </svg>
+    
+    </li>
+  </ul>
+</fieldset>
+</section>
+  
+  </div>
