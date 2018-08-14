@@ -64,6 +64,10 @@ Onde:
 - **w** : Altera a largura de todo o conjunto de elementos visíveis dentro do *viewport*;
 - **h** : Altera a altura de todo o conjunto de elementos visíveis dentro do *viewport*;
 
+### Tips
+
+- O *viewBox* funciona como se fosse a tela inteira, o canvas inteiro, da imagem, fazendo do *viewport* uma espécie de "janela" que se move pela tela e ao se redimensionar, aplica zoom na mesma. (Assim como o navegador se comporta em relação ao mapa no Google Maps, sendo o mapa o canvas inteiro e o navegador somente o viewport).
+
 ### Exemplo
 
 ![Exemplo viewBox](viewBox-example.svg)
