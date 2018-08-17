@@ -1,11 +1,18 @@
 # SVG - Scalable Vector Graphics
 
+## Tag Básica
+
+---
+
 ## Índice
 
 1. [Sintaxe](#sintaxe)
 2. [Tips](#tips)
 3. [Atributos](#svgattrs)
-
+3. [`viewBox` Atributo](#viewboxdetails)
+    1. [Exemplo do `viewbox`](#viewboxexample)
+5. [`preserveAspectRatio` Atributo](#preserveaspectratiodetails)
+    1. [Exemplo do `preserveAspectRatio`](#preserveaspectratioexample)
 
 
 <a id="#sintaxe"></a>
@@ -49,7 +56,8 @@
 - **viewBox**: sistema de coordenadas de usuário **(_user coordinate system_)**. [Mais detalhes abaixo](#viewboxDetails);
 - **preserveAspectRatio**: uilizado para manter uniforme e preservando as proporções do redimensionamento do grupo de vetores. [Mais detalhes abaixo](#preservAspectRatioDetails);
 
-<a id="#viewboxDetails"></a>
+
+<a id="viewboxdetails"></a>
 
 ---
 
@@ -71,6 +79,8 @@ Onde:
 ### Tips
 
 - O *viewBox* funciona como se fosse a tela inteira, o canvas inteiro, da imagem, fazendo do *viewport* uma espécie de "janela" que se move pela tela e ao se redimensionar, aplica zoom na mesma. (Assim como o navegador se comporta em relação ao mapa no Google Maps, sendo o mapa o canvas inteiro e o navegador somente o viewport).
+
+<a id="viewboxexample"></a>
 
 ### Exemplo do viewBox
 
@@ -122,6 +132,10 @@ Onde:
 
 ```
 
+<a id="preserveaspectratiodetails"></a>
+
+---
+
 ## `preserveAspectRatio` - O equalizador de proporções
 
 ### Sintaxe
@@ -151,6 +165,9 @@ Onde:
     - **xMaxYMax**: equivalente à *"background-position: 100% 100%;"*;
 
 - **meet|slice _(default: "meet")_**: define que viewBox deve ter as arestas de suas dimensões relativas às arestas dimensionais do viewport. Funciona de forma similar à propriedade css "_**background-size**_", onde o valor "_**contain**_" equivale ao "_**meet**_" e o valor "_**cover**_" é equivalente ao "_**slice**_";
+
+  <a id="preserveaspectratioexample"></a>
+
   - Exemplo: 
     
     <svg width="500" height="200"><text x="30" y="10" style="fill: green;">meet / contain</text><text x="50" y="40" fill="blue">viewport</text><rect x="30" y="50" width="100" height="100" fill="transparent" stroke="blue" /><text x="75" y="-140" fill="red" transform="rotate(90)">viewBox</text><rect x="31" y="75" width="99" height="50" fill="transparent" stroke="red"></rect><text x="250" y="10" fill="green">slice / cover</text><text x="270" y="40" fill="blue">viewport</text><rect x="250" y="50" width="100" height="100" fill="transparent" stroke="blue" /><rect x="220" y="51" width="160" height="98" fill="transparent" stroke="red"></rect><text x="75" y="-390" fill="red" transform="rotate(90)">viewBox</text></svg>
