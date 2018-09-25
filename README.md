@@ -42,3 +42,50 @@
 - (https://www.sitepoint.com/tips-accessible-svg/)
 - (https://svgontheweb.com/)
 - (https://css-tricks.com/guide-svg-animations-smil/)
+
+#### path
+- (https://www.dashingd3js.com/svg-paths-and-d3js)
+
+
+#### gradiente no SVG
+- (https://fvsch.com/svg-gradient-fill/)
+- (https://stackoverflow.com/questions/25500159/how-to-get-gradient-color-fill-in-bar-pie-area-charts-using-c3js?rq=1)
+  - Utilizando D3.js
+
+```javascript
+oninit: function () {
+
+  d3.select('svg').append("linearGradient")
+    .attr("id", "timeframe-gradient")
+    .attr("gradientUnits", "userSpaceOnUse")
+    .attr("x1", 0).attr("y1", 0)
+    .attr("x2", 0).attr("y2", 100)
+    .selectAll("stop")
+    .data([
+      {offset: "60%", color: "#666", opacity: 0},
+      {offset: "100%", color: "#666", opacity: 1}
+    ])
+    .enter().append("stop")
+    .attr("offset", function(d) { return d.offset; })
+    .attr("stop-color", function(d) { return d.color; })
+    .attr("stop-opacity", function(d) { return d.opacity;});
+
+}
+
+```
+
+```css
+.event-timeframe {
+  rect {
+    fill: url(#timeframe-gradient);
+  }
+}
+```
+
+- ()
+- ()
+- ()
+- ()
+- ()
+- ()
+- ()
